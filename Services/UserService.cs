@@ -87,5 +87,12 @@ namespace RoleBasedUserManagement.Services
             }
             return false;
         }
+        public async Task<bool> DeleteUserByEmailAsync(string emailId)
+        {
+
+            var user = await _userManager.FindByEmailAsync(emailId);
+            var result = await _userManager.DeleteAsync(user);
+            return result.Succeeded;
+        }
     }
 }
